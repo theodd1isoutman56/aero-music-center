@@ -11,12 +11,13 @@ print("7. add song to playlist")
 print("8. show playlist")
 print("9. next")
 print("10. previous")      
+print("11. play current song")
 
 
 while True:
     choice = input("choose: ")
     if choice == "1":
-        path = input("path: ")
+        path = input("path: ").strip('\'"')
         player.play(path)
     elif choice == "2":
         player.pause()
@@ -31,7 +32,7 @@ while True:
         player.stop()
         break
     elif choice == "7":
-        path = input("path:")
+        path = input("path:").strip('\'"')
         player.addsong(path)
     elif choice == "8":
         for index, song in enumerate(player.playlist):
@@ -40,9 +41,9 @@ while True:
         player.next()
     elif choice == "10":
         player.previous()
-
+    elif choice == "11":
+        player.play()
     else:
         print("invalid")
-
 
 

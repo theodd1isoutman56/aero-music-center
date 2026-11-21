@@ -6,10 +6,14 @@ class MusicPlayer:
         self.playlist = []
         self.current_index = -1
         self.is_paused = False
+        self.standalone_song = None
         self.volume = 0.5
         pygame.mixer.music.set_volume(self.volume)
     @property
     def current_song(self):
+        if self.standalone_song:
+            return self.standalone_song
+        
         if 0 <= self.current_index < len(self.playlist):
             return self.playlist[self.current_index]
         return None
@@ -28,15 +32,17 @@ class MusicPlayer:
             return False
 
     def play(self, song_path=None):
-
         if song_path is not None:
-            if song_path not in self.playlist:
-                self.playlist.append(song_path)
-            self.current_index = self.playlist.index(song_path)
-        if not self.current_song:
-            return False
+            if song_path in self.playlist:
+                self.current_index =  self.playlist.index(song_patch)
+                self.standalone_song = None
+            else:
+                self.standalone_song = song_path
+                self.current_index = -1
 
-        
+        elif self.current_index == -1 and self.playlist:
+            self.standalone_song = None
+            self.current_index = 0   
         try:
             pygame.mixer.music.load(self.current_song)
             pygame.mixer.music.play()
