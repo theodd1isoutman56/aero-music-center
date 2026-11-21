@@ -1,6 +1,6 @@
 import pygame
 
-class MusicPlayer:
+class musicplayer:
     def __init__(self):
         pygame.mixer.init()
         self.playlist = []
@@ -9,6 +9,8 @@ class MusicPlayer:
         self.standalone_song = None
         self.volume = 0.5
         pygame.mixer.music.set_volume(self.volume)
+        pygame.mixer.music.set_endevent(pygame.USEREVENT)
+
     @property
     def current_song(self):
         if self.standalone_song:
@@ -22,6 +24,11 @@ class MusicPlayer:
         self.playlist = songs
         self.current_index = -1
 
+    def songend(self):
+                for event in pygame.event.get():
+                    if event.type == pygame.USEREVENT:
+                        self.next()
+
     def addsong(self, song_path):
         if song_path not in self.playlist:
             self.playlist.append(song_path)
@@ -34,7 +41,7 @@ class MusicPlayer:
     def play(self, song_path=None):
         if song_path is not None:
             if song_path in self.playlist:
-                self.current_index =  self.playlist.index(song_patch)
+                self.current_index =  self.playlist.index(song_path)
                 self.standalone_song = None
             else:
                 self.standalone_song = song_path

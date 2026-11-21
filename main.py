@@ -1,5 +1,13 @@
-from player import MusicPlayer
-player = MusicPlayer()
+from player import  musicplayer
+from pathlib import Path
+from playlist import playlist1
+from library import library
+music_library = library()
+
+
+player = musicplayer()
+playlist = playlist1()
+player.theplaylist(playlist.load())
 print("aero prototype")
 print("1. play")
 print("2. pause")
@@ -11,7 +19,11 @@ print("7. add song to playlist")
 print("8. show playlist")
 print("9. next")
 print("10. previous")      
-print("11. play current song")
+print("11. play playlist")
+
+test = input("test metadata enter path:").strip('\'"')
+metadata = music_library.get_metadata(test)
+print(metadata)
 
 
 while True:
@@ -34,6 +46,7 @@ while True:
     elif choice == "7":
         path = input("path:").strip('\'"')
         player.addsong(path)
+        playlist.save(player.playlist)
     elif choice == "8":
         for index, song in enumerate(player.playlist):
             print(f"{index + 1}. {song}")
