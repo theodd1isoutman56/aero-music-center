@@ -22,3 +22,15 @@ it currently plays music once i enter the path to the file and the controls are 
 
 
 
+harinesh.sv
+Nov 21, 2026
+27m tracked
+
+so basically made the ui for the project and we are trying to go for a fruitiger -aero typa design hopefully we finish it
+
+<img width="1486" height="940" alt="image" src="https://github.com/user-attachments/assets/10ea0236-a098-4401-9ad8-d20a7e0ebf0b" />
+
+
+
+
+-Kashyap :>
