@@ -1,0 +1,3 @@
+PySide 6
+pygame
+mutagen
