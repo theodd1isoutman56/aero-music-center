@@ -1,6 +1,12 @@
 from player import MusicPlayer
 player = MusicPlayer()
-print("prototype")
+print("aero prototype")
+print("1. play")
+print("2. pause")
+print("3. resume")
+print("4. stop")
+print("5. set volume")
+print("6. exit")
 
 
 while True:
