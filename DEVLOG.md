@@ -41,3 +41,27 @@ i change background to the new frutiger aero thing... i think it looks pretty co
 <img width="1506" height="939" alt="image" src="https://github.com/user-attachments/assets/df389b18-5703-48d4-84fe-77e121d82d7e" />
 
 
+theodd1isoutman56
+Nov 21, 2026
+1h 32m tracked
+
+I added the ability to make playlists, go back and forth between songs in said playlist, songs autoplaying to the next song while in playlist, previous and next looping to the original song once they reach the end of the playlist, songs saving in the playlist so that it is still accessible once left and reopened, and a WIP album metadata shower which is being debugged.
+
+The plan is that i take care of the music engine and Harinesh takes care of the UI, and towards the end we sort of fuse them together to create our final product :P
+
+<img width="860" height="295" alt="image" src="https://github.com/user-attachments/assets/9802d349-1f6e-4f0a-a29b-7de51a189f12" />
+
+
+<img width="1313" height="363" alt="image" src="https://github.com/user-attachments/assets/c18ebbe2-416b-4f0f-8c5d-f8e684f7bc8b" />
+
+
+right now the Metadata thing (which im using Mutagen for) is super bugged and returns a lot of binary junk (as seen below) when i put in an mp3 file that i know has some metadata in it
+
+<img width="1911" height="782" alt="image" src="https://github.com/user-attachments/assets/b7d249fb-5f03-4d40-ade9-94f4c3101fb4" />
+
+
+Im gonna go to bed now, tommorow ill definitely fix the metadata thing and add a lot more features. Ill also help Harinesh out with whatever things he needs in the UI part
+
+the music engine is almost completely done in PyGame.
+
+-Kashyap :>
