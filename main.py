@@ -7,25 +7,39 @@ print("3. resume")
 print("4. stop")
 print("5. set volume")
 print("6. exit")
+print("7. add song to playlist")
+print("8. show playlist")
+print("9. next")
+print("10. previous")      
 
 
 while True:
-    choice = int(input("choose: "))
-    if choice == 1:
+    choice = input("choose: ")
+    if choice == "1":
         path = input("path: ")
         player.play(path)
-    elif choice == 2:
+    elif choice == "2":
         player.pause()
-    elif choice == 3:
+    elif choice == "3":
         player.resume()
-    elif choice == 4:
+    elif choice == "4":
         player.stop()
-    elif choice == 5:
+    elif choice == "5":
         volume = float(input("volume: "))
         player.set_volume(volume)
-    elif choice == 6:
+    elif choice == "6":
         player.stop()
         break
+    elif choice == "7":
+        path = input("path:")
+        player.addsong(path)
+    elif choice == "8":
+        for index, song in enumerate(player.playlist):
+            print(f"{index + 1}. {song}")
+    elif choice == "9":
+        player.next()
+    elif choice == "10":
+        player.previous()
 
     else:
         print("invalid")
