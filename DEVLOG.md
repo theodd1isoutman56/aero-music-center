@@ -8,7 +8,7 @@ Nov 21, 2026
 29m tracked*****
 
 made the first initial prototype!!
-used AI
+
 I haven't made the UI yet and worked on the music engine too much (my friend Harinesh is actually on the UI) but i made something super basic and im proud of it!!
 
 i watched a video of some guy explaining pygame to me and i used his advice
