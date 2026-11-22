@@ -58,6 +58,10 @@ while True:
         if player.removesong():
             playlist.save(player.playlist)
             print("song removed")
+
+    elif choice == '13':
+        player.clearplaylist()
+        playlist.save(player.playlist)
     else:
         print("invalid")
 

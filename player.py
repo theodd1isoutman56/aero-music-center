@@ -117,3 +117,13 @@ class musicplayer:
             return True
         except ValueError:
             return False
+
+
+        def clearplaylist(self):
+            self.stop()
+            self.playlist.clear()
+            self.current_index = -1
+            self.standalone_song = None
+            print("playlist cleared")
+
+            
