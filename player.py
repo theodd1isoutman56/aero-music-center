@@ -94,6 +94,11 @@ class musicplayer:
 
 
     def removesong(self):
+
+        if not self.playlist:
+            print("empty playlist")
+            return False
+
         for number, song in enumerate(self.playlist, start=1):
 
             print(f"{number}. {song}")
