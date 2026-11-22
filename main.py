@@ -21,9 +21,6 @@ print("9. next")
 print("10. previous")      
 print("11. play playlist")
 
-test = input("test metadata enter path:").strip('\'"')
-metadata = music_library.get_metadata(test)
-print(metadata)
 
 
 while True:
