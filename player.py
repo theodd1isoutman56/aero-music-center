@@ -11,7 +11,7 @@ class musicplayer:
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.set_endevent(pygame.USEREVENT)
 
-    @property
+    
     def current_song(self):
         if self.standalone_song:
             return self.standalone_song
@@ -51,10 +51,10 @@ class musicplayer:
             self.standalone_song = None
             self.current_index = 0   
         try:
-            pygame.mixer.music.load(self.current_song)
+            pygame.mixer.music.load(self.current_song())
             pygame.mixer.music.play()
             self.is_paused = False
-            print(f"playng: {self.current_song}")
+            print(f"playng: {self.current_song()}")
             return True
         except pygame.error as e:
             print(f"error: {e}")
@@ -91,3 +91,24 @@ class musicplayer:
             return False
         self.current_index = (self.current_index - 1) % len(self.playlist) 
         return self.play()
+
+
+    def removesong(self):
+        for number, song in enumerate(self.playlist, start=1):
+
+            print(f"{number}. {song}")
+        try:
+            choice = int(input('track numebr to remove'))
+            if not 1 <= choice <= len(self.playlist):
+                print("invalid")
+                return False
+            removedsong = self.playlist.pop(choice-1)
+            if removedsong == self.current_song():
+                self.stop()
+                self.current_index = -1
+
+            elif choice - 1 < self.current_index:
+                self.current_index -= 1
+            return True
+        except ValueError:
+            return False

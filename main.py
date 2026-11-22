@@ -1,4 +1,4 @@
-from player import  musicplayer
+from player import musicplayer
 from pathlib import Path
 from playlist import playlist1
 from library import library
@@ -20,6 +20,7 @@ print("8. show playlist")
 print("9. next")
 print("10. previous")      
 print("11. play playlist")
+print("12. remove specific tracks from playlist")
 
 
 
@@ -53,6 +54,10 @@ while True:
         player.previous()
     elif choice == "11":
         player.play()
+    elif choice == "12":
+        if player.removesong():
+            playlist.save(player.playlist)
+            print("song removed")
     else:
         print("invalid")
 
