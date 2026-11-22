@@ -62,6 +62,10 @@ while True:
     elif choice == '13':
         player.clearplaylist()
         playlist.save(player.playlist)
+
+    elif choice == '14':
+        player.songshuffle()
+
     else:
         print("invalid")
 

@@ -45,6 +45,8 @@ class musicplayer:
             return False
 
     def play(self, song_path=None):
+
+        
         if song_path is not None:
             if song_path in self.playlist:
                 self.current_index =  self.playlist.index(song_path)
@@ -53,16 +55,31 @@ class musicplayer:
                 self.standalone_song = song_path
                 self.current_index = -1
 
+
         elif self.current_index == -1 and self.playlist:
             self.standalone_song = None
-            self.current_index = 0   
+            if self.shuffle:
+                self.current_index = random.choice(range(len(self.playlist)))
+                self.shuffle_order = list(range(len(self.playlist)))
+                self.shuffle_order.remove(self.current_index)
+                random.shuffle(self.shuffle_order)
+                self.shuffle_position = -1
+            else:
+                self.current_index = 0
+
+        song = self.current_song()
+
+        if song is None:
+            print("no song selected")
+            return False
+                 
         try:
             pygame.mixer.music.load(self.current_song())
             pygame.mixer.music.play()
             self.is_paused = False
             print(f"playng: {self.current_song()}")
             return True
-        except pygame.error as e:
+        except (pygame.error. TypeError) as e:
             print(f"error: {e}")
             return False
     def pause(self):
@@ -89,6 +106,18 @@ class musicplayer:
     def next(self):
         if not self.playlist:
             return False
+
+        if self.shuffle:
+            self.shuffle_position += 1
+
+            if self.shuffle_position >= len(self.shuffle_order):
+                random.shuffle(self.shuffle_order)
+                self.shuffle_position = 0
+
+            self.current_index = self.shuffle_order[self.shuffle_position]
+
+        else:
+            self.current_index = (self.current_index +1) % len(self.playlist)
         self.current_index = (self.current_index + 1) % len(self.playlist)
         return self.play()
                                                         #^^ and vv the percentage make it so the playlist loops
@@ -131,6 +160,22 @@ class musicplayer:
             self.current_index = -1
             self.standalone_song = None
             print("playlist cleared")
+
+
+    def songshuffle(self):
+        self.shuffle = not self.shuffle
+
+        if self.shuffle:
+            self.shuffle_order = list(range(len(self.playlist)))
+            random.shuffle(self.shuffle_order)
+            if self.current_index in self.shuffle_order:
+                self.shuffle_order.remove(self.current_index)
+                self.shuffle_order.insert(0, self.current_index)
+
+            self.shuffle_position=0
+            print("shuffle on")
+        else:
+            self.shuffle_order=[]
 
 
 
