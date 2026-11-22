@@ -21,6 +21,8 @@ print("9. next")
 print("10. previous")      
 print("11. play playlist")
 print("12. remove specific tracks from playlist")
+print("13. clear playlist")
+print("14. shuffle")
 
 
 

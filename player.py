@@ -151,6 +151,7 @@ class musicplayer:
                 self.current_index -= 1
             return True
         except ValueError:
+            print("error error error error reeororoeoroe")
             return False
 
 
