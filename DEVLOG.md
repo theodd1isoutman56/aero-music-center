@@ -30,6 +30,7 @@ so basically made the ui for the project and we are trying to go for a fruitiger
 
 <img width="1486" height="940" alt="image" src="https://github.com/user-attachments/assets/10ea0236-a098-4401-9ad8-d20a7e0ebf0b" />
 
+-Harinesh :P
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -42,6 +43,7 @@ i change background to the new frutiger aero thing... i think it looks pretty co
 
 <img width="1506" height="939" alt="image" src="https://github.com/user-attachments/assets/df389b18-5703-48d4-84fe-77e121d82d7e" />
 
+-Harinesh :P
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
