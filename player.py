@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class musicplayer:
     def __init__(self):
@@ -8,8 +9,13 @@ class musicplayer:
         self.is_paused = False
         self.standalone_song = None
         self.volume = 0.5
+        self.shuffle = False
+        self.shuffle_order = []
+        self.shuffle_position = -1
+        
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.set_endevent(pygame.USEREVENT)
+        
 
     
     def current_song(self):
@@ -119,11 +125,13 @@ class musicplayer:
             return False
 
 
-        def clearplaylist(self):
+    def clearplaylist(self):
             self.stop()
             self.playlist.clear()
             self.current_index = -1
             self.standalone_song = None
             print("playlist cleared")
 
-            
+
+
+
