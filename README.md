@@ -4,11 +4,8 @@ WMC [Windows Media Center] inspired project that takes on the glossy in-era arts
 Created for Hack Club Coral 2026. As of right now can only play MP3s. 
 
 
+--------------------------------
+
+**[read the devlog here !!! (DEVLOG.md)](DEVLOG.md)**
 
 
-
-
-
-
-
-theodd1isoutman56 was here >:P
