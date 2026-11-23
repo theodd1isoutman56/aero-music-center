@@ -1,5 +1,9 @@
 import pygame
 import random
+import threading 
+import queue
+import time
+
 
 class musicplayer:
     def __init__(self):
@@ -12,6 +16,7 @@ class musicplayer:
         self.shuffle = False
         self.shuffle_order = []
         self.shuffle_position = -1
+        self.is_playing = False
         
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.set_endevent(pygame.USEREVENT)
@@ -31,9 +36,10 @@ class musicplayer:
         self.current_index = -1
 
     def songend(self):
-                for event in pygame.event.get():
-                    if event.type == pygame.USEREVENT:
-                        self.next()
+                if self.is_playing and not self.is_paused and not pygame.mixer.music.get_busy():
+                
+                    self.is_playing = False
+                    self.next()
 
     def addsong(self, song_path):
         if song_path not in self.playlist:
@@ -76,6 +82,7 @@ class musicplayer:
         try:
             pygame.mixer.music.load(song)
             pygame.mixer.music.play()
+            self.is_playing = True
             self.is_paused=False
             print(f"playing: {song}")
             return True
@@ -98,6 +105,7 @@ class musicplayer:
         self.is_paused = False
         self.current_index = -1
         self.shuffle_position = -1
+        self.is_playing = False
 
     def set_volume(self, volume):
         self.volume = max(0.0, min(1.0, volume))

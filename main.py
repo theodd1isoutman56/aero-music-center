@@ -2,19 +2,22 @@ from player import musicplayer
 from pathlib import Path
 from playlist import playlist1
 from library import library
-import threading
-player2 = musicplayer()
+
+import threading 
+import queue
+import time
+
 music_library = library()
 
-
-def monitor_song():
-    while True:
-        player2.songend()
-        threading.Event().wait(0.1)
-
-threading.Thread(target=monitor_song, daemon=True).start()
-
 player = musicplayer()
+
+commands = queue.Queue()
+def input1():
+    while True:
+        commands.put(input("choose: "))
+
+threading.Thread(target=input1, daemon=True).start()
+
 playlist = playlist1()
 player.theplaylist(playlist.load())
 print("aero prototype")
@@ -36,7 +39,16 @@ print("14. shuffle")
 
 
 while True:
-    choice = input("choose: ")
+    player.songend()
+
+    try:
+
+        choice = commands.get_nowait()
+    except queue.Empty:
+        time.sleep(0.1)
+        continue
+
+
     if choice == "1":
         path = input("path: ").strip('\'"')
         player.play(path)
@@ -53,7 +65,7 @@ while True:
         player.stop()
         break
     elif choice == "7":
-        path = input("path:").strip('\'"')
+        path = input("path: ").strip('\'"')
         player.addsong(path)
         playlist.save(player.playlist)
     elif choice == "8":
