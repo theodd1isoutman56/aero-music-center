@@ -17,6 +17,9 @@ class musicplayer:
         self.shuffle_order = []
         self.shuffle_position = -1
         self.is_playing = False
+        self.autoplay = True
+        self.loop1 = False
+        self.looplaylist = False
         
         pygame.mixer.music.set_volume(self.volume)
         pygame.mixer.music.set_endevent(pygame.USEREVENT)
@@ -36,10 +39,23 @@ class musicplayer:
         self.current_index = -1
 
     def songend(self):
-                if self.is_playing and not self.is_paused and not pygame.mixer.music.get_busy():
-                
-                    self.is_playing = False
-                    self.next()
+            if self.autoplay or not self.is_playing or not self.is_paused:
+                return
+            if pygame.mixer.music.get_busy():
+                return
+            if self.loop1:
+                pygame.mixer.music.play()
+                return
+            if not self.looplaylist:
+                if self.shuffle:
+                    if self.shuffle_position == len(self.shuffle_order) -1:
+                        self.is_playing = False
+                        return
+                elif self.current_index == len(self.playlist) -1:
+                    self.is_playing=False
+                    return
+            self.is_playing=False
+            self.next()
 
     def addsong(self, song_path):
         if song_path not in self.playlist:
@@ -214,5 +230,16 @@ class musicplayer:
             print("shuffle off")
 
 
+    def autoplaytoggle(self):
+        self.autoplay = not self.autoplay
+        print(f"autoplay{'on' if self.autoplay else 'off'}")
 
+
+    def looptoggle(self):
+        self.loop1 = not self.loop1
+        print("loop song on" if self.loop1 else "loop song off")
+
+    def playlistloop(self):
+        self.looplaylist = not self.looplaylist
+        print("loop playlist on" if self.looplaylist else "loop playlist off")
 

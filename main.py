@@ -35,6 +35,9 @@ print("11. play playlist")
 print("12. remove specific tracks from playlist")
 print("13. clear playlist")
 print("14. shuffle")
+print("15. autoplay")
+print("16. loop song")
+print("17. loop playlist")
 
 
 
@@ -88,6 +91,15 @@ while True:
 
     elif choice == '14':
         player.songshuffle()
+
+    elif choice == '15':
+        player.autoplaytoggle()
+
+    elif choice == '16':
+        player.looptoggle()
+
+    elif choice == '17':
+        player.playlistloop()
 
     else:
         print("invalid")
