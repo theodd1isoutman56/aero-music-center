@@ -138,11 +138,8 @@ class musicplayer:
 
             self.current_index = self.shuffle_order[self.shuffle_position]
         else:
-            if self.shuffle:
-                self.shuffle_position=(self.shuffle_position - 1) % len(self.shuffle_order)
-                self.current_index = self.shuffle_order[self.shuffle_position]
-            else:
-                self.current_index = (self.current_index - 1) % len(self.playlist)
+            
+            self.current_index = (self.current_index - 1) % len(self.playlist)
 
         return self.play()
 
