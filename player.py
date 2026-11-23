@@ -59,10 +59,12 @@ class musicplayer:
         elif self.current_index == -1 and self.playlist:
             self.standalone_song=None
             if self.shuffle:
-                self.shuffle_order=list(range(len(self.playlist)))
-                random.shuffle(self.shuffle_order)
-                self.shuffle_position=0
-                self.current_index=self.shuffle_order[0]
+                if not self.shuffle_order:
+                    self.shuffle_order=list(range(len(self.playlist)))
+                    random.shuffle(self.shuffle_order)
+                    self.shuffle_position = 0
+
+                self.current_index=self.shuffle_order[self.shuffle_position]
             
             else:
                 self.current_index=0
@@ -95,6 +97,8 @@ class musicplayer:
     def stop(self):
         pygame.mixer.music.stop()
         self.is_paused = False
+        self.current_index = -1
+        self.shuffle_position =-1
 
     def set_volume(self, volume):
         self.volume = max(0.0, min(1.0, volume))
@@ -182,7 +186,7 @@ class musicplayer:
             if self.current_index in self.shuffle_order:
                 self.shuffle_order.remove(self.current_index)
                 self.shuffle_order.insert(0, self.current_index)
-                self.shuffle_position=-1
+                self.shuffle_position=0
 
             print("shuffle on")
 
