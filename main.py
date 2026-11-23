@@ -27,6 +27,7 @@ print("14. shuffle")
 
 
 while True:
+    player.songend
     choice = input("choose: ")
     if choice == "1":
         path = input("path: ").strip('\'"')
