@@ -39,7 +39,7 @@ class musicplayer:
         self.current_index = -1
 
     def songend(self):
-            if self.autoplay or not self.is_playing or not self.is_paused:
+            if not self.autoplay or not self.is_playing or self.is_paused:
                 return
             if pygame.mixer.music.get_busy():
                 return
