@@ -2,8 +2,17 @@ from player import musicplayer
 from pathlib import Path
 from playlist import playlist1
 from library import library
+import threading
+player2 = musicplayer()
 music_library = library()
 
+
+def monitor_song():
+    while True:
+        player2.songend()
+        threading.Event().wait(0.1)
+
+threading.Thread(target=monitor_song, daemon=True).start()
 
 player = musicplayer()
 playlist = playlist1()
@@ -27,7 +36,6 @@ print("14. shuffle")
 
 
 while True:
-    player.songend
     choice = input("choose: ")
     if choice == "1":
         path = input("path: ").strip('\'"')
