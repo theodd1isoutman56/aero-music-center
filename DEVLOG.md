@@ -123,4 +123,82 @@ P.S. Harinesh has a lot of schoolwork to catch up on so it might be a while befo
 
 Anyway, props if you took the time to read all this Catch you later!
 
-Kashyap :>
+-Kashyap :>
+
+---------
+
+*****harinesh.sv
+Nov 23, 2026
+1h 42m tracked*****
+
+**Made even more UI YUHHHH**
+
+now we're talking! the ui looking much more fresh , i added a translucent almost box around the welcome sign (dont worry this will be filled up ALOT after a few more devlogs :P), i added a quote saying 'VERSION: NOSTALGIA' (fits it dont ya think) and also... changed to pyside6 cuz its more app focused than pygame :[ . I kind of AM running out of ideas on what to put for the background but most likely will be sorted out by the following devlog , anyway have a good day all of you
+
+<img width="1726" height="1051" alt="image" src="https://github.com/user-attachments/assets/0fca72b2-6747-4a2d-899f-3139e3991a47" />
+
+
+-HARINESH :]
+
+------
+
+*****theodd1isoutman56
+Nov 23, 2026
+2h 33m tracked*****
+
+**fixed a LOOTTTT of bug in the music engine, finished shuffle, and added loop functions**
+
+Hiya!! So today i decided to go all out on bug fixes, so i didnt add a lot of new features. Heres a list of the things ive done
+
+AUTOPLAYS BACK!! so it turns out autoplay doesnt play nice and needs a bunch of other requirements, most notably threading and queue to get working, since input() prevented proper autoplay playback since it was waiting for a command. As usual since i was working with something that i have pretty much no experience in, i needed some help using AI. But once i got the hang of it, understanding what the problem was in the first place, and how to approach it and stuff, it was really straightforward!!
+<img width="201" height="67" alt="image" src="https://github.com/user-attachments/assets/d346e686-a643-4095-91d4-cc569b8c887c" />
+
+
+it has its own dedicated toggle button in the menu, accessed via 15
+
+<img width="711" height="370" alt="image" src="https://github.com/user-attachments/assets/e681a27c-e2b0-41fc-bf64-bc5cd0f47f63" />
+
+
+<img width="190" height="98" alt="image" src="https://github.com/user-attachments/assets/caee3396-e065-4737-9467-2b03afa862ba" />
+
+
+as you'd expect, when its enabled, the playlist moves on to the next track when its enabled, and doesnt when its not.
+
+As you know, most parts of shuffle were unfinished, and even broken. I went all out on fixing them which took SO MUCH MORE LONGER THAN I THOUGHT. But it is what it is lol. Shuffle now works (when enabled via a toggle) when you start the playlist (starting from a randomized track, i) and when you go to the next track (moving to a randomized track, ii). There was a bug where going to the previous track was bugged or also shuffled for a long time but it has now been fixed
+i)<img width="740" height="180" alt="image" src="https://github.com/user-attachments/assets/8a1fb234-91ff-4d10-b5e7-97e26dec2b47" />
+
+
+ii)<img width="749" height="279" alt="image" src="https://github.com/user-attachments/assets/f02e2427-b3b4-450c-abae-86d57ce2f2dd" />
+
+
+iii)<img width="717" height="184" alt="image" src="https://github.com/user-attachments/assets/859d15ad-1cba-4dce-b4bf-2c50a4787e44" />
+
+
+[just so you know, 8--> shows playlist, 9--> next track, 10--> previous track, 11--> play the playlist, 14 --> shuffle on/off]
+
+Getting shuffle right took a lot more time then I'd like to admit, its honestly embarassing lol.
+
+LOOP [new feature!!!] so i added the ability to loop either the song being played right now, or to loop the entire playlist. It can be accessed via 16 and 17 respectively, I did find one bug that had been bothering me for a while only for it to be a silly little mistake caused by mixing up namings, lol.
+<img width="157" height="50" alt="image" src="https://github.com/user-attachments/assets/39b45727-d356-412e-9403-960ec8a9cb80" />
+
+
+<img width="220" height="100" alt="image" src="https://github.com/user-attachments/assets/3c49ba43-7e0f-49f3-97b1-129d16cfd67a" />
+
+
+loop song has veto over both loop playlist and autoplay, so itll keep looping the songs even if these two are enabled.
+
+It works as intended, thankfully pats myself on the back Im pretty sure ill find more bugs sooner or later though
+
+speaking of bugs, as i stated before, a huge focus on this update of mine was to eliminate as much of the petty little bugs i could find as possible. I dont remember all of them, but i've commited to main brance after each little hotfix, effective or not, so please, feel free to take a gander!!!
+
+some bugs i were able to ward off were the naming error i mentioned prior, errors where autoplay just straight up refused to run due to input(), and some bugs related to pygame, more specifically, pygame.error: video system not initialized while using their event system [ display hadnt been initialized ]
+
+one thing im not too proud of however is that some of the autoplay script is inside main.py, which is reserved for the upcoming gui. i wanted to keep the processing stuff completely seperate in its own player.py, but its come to this unfortunately. Over the next update ill work on seperating the temporary main.py CLI interface from player.py as much as possible. Ill also brainstorm and add some more features too.
+
+See you in my next log!!!
+
+-Kashyap :>
+
+------
+
+
