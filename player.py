@@ -100,8 +100,9 @@ class musicplayer:
     def stop(self):
         pygame.mixer.music.stop()
         self.is_paused = False
-        self.current_index = -1
-        self.shuffle_position =-1
+        if self.shuffle:
+            self.current_index = -1
+            self.shuffle_position = -1
 
     def set_volume(self, volume):
         self.volume = max(0.0, min(1.0, volume))
