@@ -190,7 +190,7 @@ class musicplayer:
             if self.current_index in self.shuffle_order:
                 self.shuffle_order.remove(self.current_index)
                 self.shuffle_order.insert(0, self.current_index)
-                self.shuffle_position=-1
+            self.shuffle_position=-1
 
             print("shuffle on")
 
